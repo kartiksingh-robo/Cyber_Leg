@@ -14,7 +14,7 @@ addpath(pwd);
 fprintf('=== Cyber Leg Challenge - Official Evaluation Engine ===\n\n');
 
 % ── Load environment ───────────────────────────────────────────────────────
-env = challenge_environment();
+env = challenge_environment_no_impact();
 obs = env.reset();
 dt  = env.params.dt;
 
