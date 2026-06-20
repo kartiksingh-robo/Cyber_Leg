@@ -6,7 +6,7 @@
 function env = challenge_environment_no_impact()
 
   L1 = 0.25;  L2 = 0.25;
-  m1 = 1.0;   m2 = 0.7;    % link masses [kg]
+  m1 = 0.5;   m2 = 0.35;    % link masses [kg]
   g  = 9.81;
 
   R_mot = 2.0;    % armature resistance [Ω]
@@ -41,7 +41,7 @@ function env = challenge_environment_no_impact()
 
   % =========================================================================
   function obs = do_reset()
-    state = [1.798; 0; 0; -1.344; 0; 0];
+    state = [2.827; 0; 0; -1.257; 0; 0];
     t_now = 0;
     obs   = build_obs(0, 0);
   end
@@ -77,7 +77,7 @@ function env = challenge_environment_no_impact()
     th2_new = th2 + w2    * dt;
 
     % Clamp to workspace
-    th1_new = max(1.571, min(2.199, th1_new));
+    th1_new = max(2.513, min(3.142, th1_new));
     th2_new = max(-1.571, min(-0.942, th2_new));
 
     state = [th1_new; w1_new; i1_new; th2_new; w2_new; i2_new];

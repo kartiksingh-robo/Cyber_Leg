@@ -12,7 +12,7 @@
 %                                L·di/dt = V − R·i − Ke·ω
 %                              Current clamped to ±4 A. Torque = Kt·i.
 %
-%  3. MECHANICAL LAYER       – Newton's 2nd law for rotation:
+%  3. MECHANICAL LAYER       – Newtons 2nd law for rotation:
 %                                J·α = τ_motor − τ_gravity − b·ω
 %                              Gravity torques from Lagrangian mechanics:
 %                                τ_g1 = (m1·L1/2 + m2·L1)·g·cos(θ1)
@@ -28,7 +28,7 @@
 %
 % KINEMATIC WORKSPACE
 % ──────────────────────────────────────────────────────────────────────────
-% Symmetric knee convention: θ2 = −(π − θ1)  →  θ1+θ2 = 2θ1−π
+% Symmetric knee convention: θ2 + θ1 = π/2
 % Monotonic workspace: θ1 ∈ [1.571, 2.199] rad  (90° to 126°)
 %                      covers foot heights 0.25 m to 0.44 m
 %
@@ -52,7 +52,7 @@
 function env = challenge_environment()
 
   L1 = 0.25;  L2 = 0.25;
-  m1 = 1.0;   m2 = 0.7;    % link masses [kg] (geared actuator assembly)
+  m1 = 0.5;   m2 = 0.35;    % link masses [kg] (geared actuator assembly)
   g  = 9.81;
 
   R_mot = 2.0;    % armature resistance [Ω]
@@ -140,7 +140,7 @@ function env = challenge_environment()
     th2_new = th2 + w2    * dt;
 
     % Clamp to monotonic kinematic workspace
-    th1_new = clamp(th1_new, 1.571, 2.199);   % 90° to 126°
+    th1_new = clamp(th1_new, 2.513, 3.142);   % 144° to 180°
     th2_new = clamp(th2_new, -1.571, -0.942); % −90° to −54°
 
     state = [th1_new; w1_new; i1_new; th2_new; w2_new; i2_new];

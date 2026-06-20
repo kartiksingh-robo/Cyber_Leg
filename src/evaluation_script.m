@@ -27,12 +27,12 @@ Z_ref_traj = zeros(1, N);
 for k = 1:N
   t = t_vec(k);
   if    t <  1.5,  Z_ref_traj(k) = 0.35;
-  elseif t <  3.5, Z_ref_traj(k) = 0.43;
+  elseif t <  3.5, Z_ref_traj(k) = 0.38;
   elseif t <  6.0, Z_ref_traj(k) = 0.28;
-  elseif t <  9.5, Z_ref_traj(k) = 0.40;
+  elseif t <  9.5, Z_ref_traj(k) = 0.37;
   elseif t < 12.0, Z_ref_traj(k) = 0.33;
-  else,             Z_ref_traj(k) = 0.38;
-  end
+  else,             Z_ref_traj(k) = 0.35;
+end
 end
 
 % ── Logging ───────────────────────────────────────────────────────────────
