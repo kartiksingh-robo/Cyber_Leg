@@ -45,7 +45,6 @@ function env = challenge_environment_no_impact()
     t_now = 0;
     obs   = build_obs(0, 0);
   end
-
   % =========================================================================
   function [obs, done] = do_step(V_hip, V_knee)
 

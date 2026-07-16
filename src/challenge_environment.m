@@ -92,8 +92,7 @@ function env = challenge_environment()
 
   % =========================================================================
   function obs = do_reset()
-    % θ1=103°(1.798 rad), θ2=−77°(−1.344 rad) → Z≈0.353 m
-    state = [1.798; 0; 0; -1.344; 0; 0];
+    state = [2.827; 0; 0; -1.257; 0; 0];
     t_now           = 0;
     impact_applied  = false;
     impact_occurred = false;
