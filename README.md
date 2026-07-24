@@ -42,13 +42,3 @@ octave evaluation_script.m
 ```
 
 This will run the leg simulation, trigger the random impact disturbance, and print the resulting performance metrics (Pre-impact RMS error, Max overshoot, Impact sag, Wasted energy proxy) to the terminal, followed by 4 plots (Height Tracking, Motor Voltages, Motor Currents, Joint Angles).
-
-## How to Tune PID Parameters
-The PID parameters are left configurable inside `src/participant_template.m`.
-If you wish to re-tune the controller, open `participant_template.m` and modify the gains in the **Parameters & Gains** section.
-
-**Tuning Workflow:**
-1. **Tune the Inner Loop First**: Start by setting `Kp_Z`, `Ki_Z`, and `Kd_Z` in the outer loop to low values (or skip the outer loop temporarily) and focus on getting the joints to reach desired angles quickly without oscillating. Increase `Kp_th` until the leg oscillates, add `Kd_th` to dampen, and add a small `Ki_th` to eliminate steady-state error.
-2. **Tune the Outer Loop**: Once the inner loop is fast and stable, start tuning the outer loop `Kp_Z` to track the height trajectory. 
-3. **Handle Noise**: The environment adds noise to all measurements. If the motor voltages look erratic, adjust `alpha_d` (the low-pass filter coefficient). Lower values increase smoothing but introduce lag.
-4. **Test in No-Impact Environment**: If you want to isolate tuning from random drops, you can temporarily switch `evaluation_script.m` to use `challenge_environment_no_impact()` instead of `challenge_environment()`, although the evaluation script already does this natively for baseline tests.
